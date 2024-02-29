@@ -1,0 +1,8 @@
+# Node modules 
+node_modules
+
+# Output-test
+output_validate*
+
+# Build file
+index.js

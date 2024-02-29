@@ -1,0 +1,12 @@
+{
+  "name": "fe-take-home-ex-1",
+  "description": "Limbo Labs Take Home Exercise 1 for Frontend React Role",
+  "scripts": {
+    "validate": "tsc && node index.js < input | ./validate"
+  },
+  "author": "Yam Kar Lok",
+  "devDependencies": {
+    "@types/node": "^20.11.22",
+    "typescript": "^5.3.3"
+  }
+}

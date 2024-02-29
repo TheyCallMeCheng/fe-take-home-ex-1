@@ -1,0 +1,70 @@
+#!/usr/bin/env node
+/* Do not modify this file */
+const readline = require("node:readline");
+const fs = require("node:fs");
+
+let closeCounter = 0;
+
+const stats = {
+  answers: [],
+  inputPos: -1,
+  outputPos: -1,
+  buffers: [],
+};
+
+const input = readline.createInterface({
+  input: process.stdin,
+});
+
+const output = readline.createInterface({
+  input: fs.createReadStream("output"),
+});
+
+input.on("line", compare("input"));
+
+output.on("line", compare("output"));
+
+input.on("close", close);
+
+output.on("close", close);
+
+function compare(type) {
+  return (line) => {
+    if (type === "input") {
+      stats.inputPos++;
+      if (stats.buffers.length < stats.inputPos + 1) {
+        stats.buffers.push(line);
+      } else {
+        const output = stats.buffers[stats.inputPos];
+        if (output !== line) {
+          stats.answers.push(`🔴 Expected ${output} but got ${line}`);
+        } else {
+          stats.answers.push(`🟢 Correct output: ${line}`);
+        }
+        stats.buffers[stats.inputPos] = "";
+      }
+    } else {
+      stats.outputPos++;
+      if (stats.buffers.length < stats.outputPos + 1) {
+        stats.buffers.push(line);
+      } else {
+        const input = stats.buffers[stats.outputPos];
+        if (input !== line) {
+          stats.answers.push(`🔴 Expected ${line} but got ${input}`);
+        } else {
+          stats.answers.push(`🟢 Correct output: ${line}`);
+        }
+        stats.buffers[stats.outputPos] = "";
+      }
+    }
+  };
+}
+
+function close() {
+  closeCounter++;
+  if (closeCounter === 2) {
+    for (let i = 0; i < stats.answers.length; i++) {
+      console.log(stats.answers[i]);
+    }
+  }
+}
