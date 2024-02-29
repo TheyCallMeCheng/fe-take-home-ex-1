@@ -29,12 +29,12 @@ the amount of `BTC`/`ETH`/`DOGE` used.
 In the output file, every line corresponds to the amount of `TOKEN` expected with the given
 input of currency.
 
-<detail>
+<details>
     <summary>What is TOKEN?</summary>
 
     `TOKEN` is just any arbitary token that can be purchased.
 
-</detail>
+</details>
 
 You're encouraged to make use of comments to indicate thought process.
 
