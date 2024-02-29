@@ -15,8 +15,8 @@ code, unless you feel is necessary.
 As indicated in [index.ts](index.ts), the input is as the following format:
 
 ```
-<BTCUSD rate> <ETHUSD rate> <DOGEUSD rate>
-<TOKEN rate> <TOKEN decimal places> <Purchase currency> <BTC/ETH/DOGE purchase amount>
+<BTC_USD rate> <ETH_USD rate> <DOGE_USD rate>
+<ETH_TOKEN rate> <TOKEN decimal places> <Purchase currency> <BTC/ETH/DOGE purchase amount>
 ```
 
 Where the first line indicates the rate of the conversion rate from `BTC` to `USD`, `ETH`
@@ -80,30 +80,30 @@ Please let us know the difficulty you've chosen and attempted.
 
 ## F.A.Q.
 
-<detail>
+<details>
     <summary>Why does the repository says exercise 1? Is there more?</summary>
 
     No, this is just one take-home exercise out of the collection we have. You're just
     a lucky fella to get the first one.
 
-</detail>
+</details>
 
-<detail>
+<details>
     <summary>This take home is too difficult, can I ask for another one?</summary>
 
     No, the other task are all similar in difficulty, with 3 difficulty levels. So there
     won't be much difference even if I give u other tasks.
 
-</detail>
+</details>
 
-<detail>
+<details>
     <summary>Why this task?</summary>
 
     The task is designed to test the handling of floating point accurately in JavaScript.
 
-</detail>
+</details>
 
-<detail>
+<details>
     <summary>I have more questions</summary>
 
     Feel free to reach out to ask more questions to whoever you are contacting with.
@@ -111,4 +111,4 @@ Please let us know the difficulty you've chosen and attempted.
     Asking questions / guidance / hints do not penalize anything. Unless the questions
     may give too much answers, then we'll let you know before we answer.
 
-</detail>
+</details>
