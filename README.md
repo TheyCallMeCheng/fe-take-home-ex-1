@@ -16,7 +16,7 @@ As indicated in [index.ts](index.ts), the input is as the following format:
 
 ```
 <BTCUSD rate> <ETHUSD rate> <DOGEUSD rate>
-<ETHSALE rate> <SALE decimal places><Purchase currency> <BTC /ETH/DOGE purchase amount>
+<TOKEN rate> <TOKEN decimal places> <Purchase currency> <BTC/ETH/DOGE purchase amount>
 ```
 
 Where the first line indicates the rate of the conversion rate from `BTC` to `USD`, `ETH`
@@ -26,13 +26,13 @@ The second line onwards indicates the rate of conversion from `ETH` to some toke
 the number of decimal places the token uses, the currency used to purchase, and
 the amount of `BTC`/`ETH`/`DOGE` used.
 
-In the output file, every line corresponds to the amount of `SALE` expected with the given
+In the output file, every line corresponds to the amount of `TOKEN` expected with the given
 input of currency.
 
 <detail>
-    <summary>What is SALE?</summary>
+    <summary>What is TOKEN?</summary>
 
-    `SALE` is just any arbitary token that can be purchased.
+    `TOKEN` is just any arbitary token that can be purchased.
 
 </detail>
 

@@ -1,11 +1,11 @@
 import readline from "node:readline";
 
 // input
-// <BTCUSD rate> <ETHUSD rate> <DOGEUSD rate>
-// <ETHSALE rate> <SALE decimal places><Purchase currency> <BTC /ETH/DOGE purchase amount>
+// <BTC_USD rate> <ETH_USD rate> <DOGE_USD rate>
+// <ETH_TOKEN rate> <TOKEN decimal places> <Purchase currency> <BTC/ETH/DOGE purchase amount>
 
 // output
-// </amount of SALE expected, rounded to a given decimal>
+// </amount of TOKEN expected, rounded to a given decimal>
 
 const rl = readline.createInterface({
   input: process.stdin,
