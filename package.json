@@ -6,7 +6,9 @@
   },
   "author": "Yam Kar Lok",
   "devDependencies": {
+    "@types/big.js": "^6.2.2",
     "@types/node": "^20.11.22",
+    "big.js": "^6.2.1",
     "typescript": "^5.3.3"
   }
 }
