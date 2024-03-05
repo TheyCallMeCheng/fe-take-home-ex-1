@@ -14,18 +14,18 @@ const rl = readline.createInterface({
 
 /* Your code goes here : START */
 /*
-* I opted for the easy solution
-
-* Initially I was going for the medium one but then I realized that the best way was
-* to treat every number as an array and save the exponent
-* and create three functions: sum, div, mul
-* But It would've took too much time.
-* So I opted for an external library called Big.js
-* But I had some inconsistency with the results with some rounding errors,
-* so I tried making a script in C and in python to see the results
-* and both gave different results, you can find the results in tests/c and tests/python 
-* note: In python I only did a few tests
-* My conclusion is that the results may vary based on how the calculation is implemented
+* I opted for the easy solution.
+* While reading this https://floating-point-gui.de/formats/fp/ 
+* I found a floating point visualizer https://evanw.github.io/float-toy/
+* Which made me realize that there is a limit in precision to the 64 bit float that js uses
+* exactly 15.95 decimals can be rapresented, and I noticed that was right where my problems were found.
+* So using the debugger I went inside bigjs times() and div() functions
+* and noticed that my imprecisions were made with the divisions
+* So after some trial and error I notied that there is a precision parameter 
+* specifically designed for operations made with divisions. 
+* The standard DP is 20 which was making my calculations in the divisions off by 0.000000000000000000001
+* And it was amplified later by the multiplication
+*
 */
 
 // I'm going to store the price of the three tokens for future use
@@ -33,9 +33,8 @@ let ethPrice: Big;
 let btcPrice: Big;
 let dogePrice: Big;
 let lineCounter: number = 0;
-// Big.PE = 50;
-
-// I will need a line counter so that I can save the prices effectively in the first line
+Big.PE = 30;
+Big.DP = 30;
 
 rl.on("line", (line) => {
   // First line has the token prices
@@ -83,10 +82,9 @@ function storePrices(line: string){
 // Returns the number with the correct precision specified in the code
 function toPrecision(number: Big, precision: number){
   let numberSplit = number.toString().split(".")
+  // if the number is small, use toFixed to return a number an truncate to precision
   if(number.toString().includes("e")){
-    // I tried using prec() (precision), toFixed and even increasing default PE to 50
-    // but I couldn't remove the exp so for the sake of simplicity I decided to return zero in these cases 
-    return "0." + '0'.repeat(precision)
+    return number.toFixed(precision, 0);
   }
   
   // if it doesn't have decimals we add zeros
@@ -96,5 +94,6 @@ function toPrecision(number: Big, precision: number){
 
   return numberSplit[0] + "." + numberSplit[1].substring(0, precision).padEnd(precision, '0');
 }
+
 
 /* Your code goes here : END */
